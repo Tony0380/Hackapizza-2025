@@ -6,7 +6,7 @@ class LettoreDomande:
         self.file = file
 
     def leggi(self):
-        with open(self.file, newline='') as csvfile:
+        with open(self.file, "r") as csvfile:
             reader = csv.reader(csvfile)
             for row in reader:
                 self.domande.append(row)
