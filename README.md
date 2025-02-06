@@ -12,6 +12,7 @@ Hackapizza-2025
 │  ├── Misc
 │  ├── domande.csv
 ├── src
+│  ├── LettoreDomande.py
 ├── README.md
 ```
 Nel seguito si dettagliano i ruoli dei diversi componenti:
@@ -20,5 +21,4 @@ Nel seguito si dettagliano i ruoli dei diversi componenti:
 - `Hackapizza Dataset/domande.csv`: Contiene le domande da rispondere
 - `src`: Contiene il codice sorgente del progetto
 - `README.md`: Questo file
-
 ---
