@@ -12,8 +12,7 @@ Hackapizza-2025
 │  ├── Misc
 │  ├── domande.csv
 ├── src
-│  ├── LettoreDomande.py
-│  ├── PDFReader.py
+│  ├── RAG.ipynb
 ├── README.md
 ```
 Nel seguito si dettagliano i ruoli dei diversi componenti:
@@ -21,7 +20,6 @@ Nel seguito si dettagliano i ruoli dei diversi componenti:
 - `Hackapizza Dataset/`: Contiene il dataset fornito da Datapizza su cui lavorare
   - `domande.csv`: Contiene le domande da rispondere
 - `src/`: Contiene il codice sorgente del progetto
-    - `LettoreDomande.py`: Script Python per leggere le domande dal file `domande.csv`
-    - `PDFreader.py`: Script Python per leggere informazioni da file pdf
+    - `RAG.ipynb`: Notebook Jupyter con il codice per la risoluzione delle domande
 - `README.md`: Questo file
 ---
