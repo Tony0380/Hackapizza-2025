@@ -6,8 +6,10 @@ def rag_pipeline(folder_path, query, k=20):
     """
     Sistema RAG: Recupera i documenti rilevanti e genera una risposta con il LLM.
 
-
-
+    Args:
+    - folder_path (str): Percorso della cartella principale.
+    - query (str): Query di ricerca.
+    - k (int): Numero di documenti da recuperare.
     Returns:
     - str: La risposta generata dal LLM.
     """
