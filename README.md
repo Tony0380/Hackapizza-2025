@@ -12,7 +12,8 @@ Hackapizza-2025
 │  ├── Misc
 │  ├── domande.csv
 ├── src
-│  ├── RAG.ipynb
+│  ├── Generation
+│  ├── Retrieval
 ├── README.md
 ```
 Nel seguito si dettagliano i ruoli dei diversi componenti:
@@ -20,6 +21,7 @@ Nel seguito si dettagliano i ruoli dei diversi componenti:
 - `Hackapizza Dataset/`: Contiene il dataset fornito da Datapizza su cui lavorare
   - `domande.csv`: Contiene le domande da rispondere
 - `src/`: Contiene il codice sorgente del progetto
-    - `RAG.ipynb`: Notebook Jupyter con il codice per la risoluzione delle domande
+    - `Generation/`: Contiene funzioni per la GenAI
+    - `Retrieval/`: Contiene funzioni per il retrieval del dataset e l'indexing
 - `README.md`: Questo file
 ---
