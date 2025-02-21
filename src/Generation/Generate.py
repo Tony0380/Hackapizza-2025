@@ -4,10 +4,36 @@ import getpass
 from langchain.llms import LlamaCpp
 from langchain.llms import OpenAI
 from dotenv import load_dotenv
+import google.generativeai as genai
+from langchain_google_genai import ChatGoogleGenerativeAI
+
+
+def gemini_llm():
+    """
+    Inizializza e restituisce un'istanza del modello Gemini per LangChain
+    """
+    # Importa la chiave API da variabile d'ambiente o file .env
+    from dotenv import load_dotenv
+    import os
+    import getpass
+
+    load_dotenv()
+
+    if "GOOGLE_API_KEY" not in os.environ:
+        api_key = getpass.getpass("Inserisci la tua Google API key: ")
+        os.environ["GOOGLE_API_KEY"] = api_key
+
+    # Inizializza l'API Gemini
+    genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+
+    # Crea l'istanza LangChain compatibile con Gemini
+    llm = ChatGoogleGenerativeAI(model="gemini-pro")
+
+    return llm
 
 def local_llm():
     # Percorso del modello GGUF
-    model_path = "../../models/mistral-7b-instruct-v0.2.Q6_K.gguf"
+    model_path = "../../models/mistral-7b-instruct-v0.2.Q4_K_M.gguf"
 
     # Inizializza il modello
     llm = LlamaCpp(
@@ -21,7 +47,7 @@ def local_llm():
     return llm
 
 
-def API_llm():
+def OpenAI_llm():
     # Carica variabili d'ambiente da .env file
     load_dotenv()
 
@@ -63,8 +89,7 @@ def rag_pipeline(folder_path, query, k=20):
     Risposta:
     """
 
-    #llm = API_llm()
-    llm = local_llm()
+    llm = gemini_llm()
 
     # Genera la risposta con il modello
     print("🔹 Generazione della risposta in corso...")
@@ -73,7 +98,9 @@ def rag_pipeline(folder_path, query, k=20):
 
 pquery = "Quali piatti contengono i Ravioli al Vaporeon?"
 
-response = rag_pipeline("../../HackapizzaDataset", pquery,10)
+query = "Quali piatti contengono i Ravioli al Vaporeon?"
+response = search("../../HackapizzaDataset", query, 20)
+#response = rag_pipeline("../../HackapizzaDataset", pquery,20)
 
 print("🔹 RISPOSTA:")
 print(response)
