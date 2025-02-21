@@ -1,2 +1,5 @@
 langchain==0.3.19
 langchain_community==0.3.18
+langchain_google_genai==2.0.9
+protobuf==5.29.3
+python-dotenv==1.0.1
