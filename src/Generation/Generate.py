@@ -99,8 +99,8 @@ def rag_pipeline(folder_path, query, k=20):
 pquery = "Quali piatti contengono i Ravioli al Vaporeon?"
 
 query = "Quali piatti contengono i Ravioli al Vaporeon?"
-response = search("../../HackapizzaDataset", query, 20)
-#response = rag_pipeline("../../HackapizzaDataset", pquery,20)
+#response = search("../../HackapizzaDataset", query, 20)
+response = rag_pipeline("../../HackapizzaDataset", pquery,20)
 
 print("🔹 RISPOSTA:")
-print(response)
+print(response.content)

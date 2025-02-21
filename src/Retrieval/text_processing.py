@@ -10,7 +10,7 @@ def chunking(folder_path):
     :return: Lista di chunk.
     """
     documents = loadDocuments(folder_path)
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)
     chunks = text_splitter.split_documents(documents)
     return chunks
 
@@ -39,12 +39,13 @@ def indexing(chunks, embedding_model):
     return vectorstore
 
 def indexing_pipeline(folder_path):
-    embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     """
     Esegue il chunking, l'embedding e l'indicizzamento di documenti.
     :param folder_path: Percorso della cartella principale.
     :return: Vettore store.
     """
+    embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+
     chunks = chunking(folder_path)
     chunk_embeddings = embedding(chunks, embedding_model)
     vectorstore = indexing(chunks, embedding_model)
