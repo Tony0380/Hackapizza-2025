@@ -83,7 +83,6 @@ def rag_pipeline(folder_path, query, k=20):
     prompt = f"""
     Usa le seguenti informazioni per rispondere alla domanda in modo accurato:
     {context}
-    Fornire in output una lista di piatti che rispettano tali criteri sulla base della documentazione fornita:
 
     Domanda: {query}
     Risposta:
@@ -96,11 +95,10 @@ def rag_pipeline(folder_path, query, k=20):
     response = llm.invoke(prompt)
     return response
 
-pquery = "Quali piatti contengono i Ravioli al Vaporeon?"
+pquery = "Ingredienti di Sinfonia Cosmica: Versione Pizza"
 
-query = "Quali piatti contengono i Ravioli al Vaporeon?"
-#response = search("../../HackapizzaDataset", query, 20)
-response = rag_pipeline("../../HackapizzaDataset", pquery,20)
+#response = search("../../HackapizzaDataset", pquery, 20)
+response = rag_pipeline("../../HackapizzaDataset", pquery,25)
 
 print("🔹 RISPOSTA:")
 print(response.content)

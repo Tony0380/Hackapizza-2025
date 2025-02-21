@@ -10,20 +10,9 @@ def chunking(folder_path):
     :return: Lista di chunk.
     """
     documents = loadDocuments(folder_path)
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=16384*2, chunk_overlap=500*2)
     chunks = text_splitter.split_documents(documents)
     return chunks
-
-
-def embedding(chunks, embedding_model):
-    """
-    Esegue l'embedding di chunk di testo utilizzando un modello preaddestrato.
-    :param chunks: Lista di chunk.
-    :return: Lista di embedding.
-    """
-
-    chunk_embeddings = embedding_model.embed_documents([chunk.page_content for chunk in chunks])
-    return chunk_embeddings
 
 def indexing(chunks, embedding_model):
     """
@@ -47,7 +36,6 @@ def indexing_pipeline(folder_path):
     embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
     chunks = chunking(folder_path)
-    chunk_embeddings = embedding(chunks, embedding_model)
     vectorstore = indexing(chunks, embedding_model)
     return vectorstore
 
