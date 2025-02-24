@@ -1,0 +1,1 @@
+from .generate import rag_pipeline

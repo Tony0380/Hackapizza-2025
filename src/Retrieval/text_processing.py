@@ -10,7 +10,7 @@ def chunking(folder_path):
     :return: Lista di chunk.
     """
     documents = loadDocuments(folder_path)
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=16384*2, chunk_overlap=500*2)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=4096*2, chunk_overlap=500)
     chunks = text_splitter.split_documents(documents)
     return chunks
 

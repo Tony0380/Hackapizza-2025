@@ -94,11 +94,3 @@ def rag_pipeline(folder_path, query, k=20):
     print("🔹 Generazione della risposta in corso...")
     response = llm.invoke(prompt)
     return response
-
-pquery = "Ingredienti di Sinfonia Cosmica: Versione Pizza"
-
-#response = search("../../HackapizzaDataset", pquery, 20)
-response = rag_pipeline("../../HackapizzaDataset", pquery,25)
-
-print("🔹 RISPOSTA:")
-print(response.content)
