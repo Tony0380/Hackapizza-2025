@@ -88,7 +88,6 @@ def rag_pipeline(folder_path, query, k=20):
     {context}
 
     Domanda: {query}
-    Risposta:
     """
 
     llm = local_llm()
