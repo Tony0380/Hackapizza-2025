@@ -1,3 +1,5 @@
+from triton.language.extra.cuda import num_threads
+
 from src.Retrieval import search
 import os
 import getpass
@@ -33,15 +35,16 @@ def gemini_llm():
 
 def local_llm():
     # Percorso del modello GGUF
-    model_path = "../../models/mistral-7b-instruct-v0.2.Q4_K_M.gguf"
+    model_path = "models/mistral-7b-instruct-v0.2.Q4_K_M.gguf"
 
     # Inizializza il modello
     llm = LlamaCpp(
         model_path=model_path,
-        temperature=0.7,  # Controlla la creatività delle risposte
-        max_tokens=512,  # Limita la lunghezza della risposta
+        n_gpu_layers=50,
+        temperature=0.7, # Controlla la creatività delle risposte
+        max_tokens=512*2,  # Limita la lunghezza della risposta
         top_p=0.9,
-        n_ctx=4096*2,  # Numero di token massimo nel contesto
+        n_ctx=4096*2*2,  # Numero di token massimo nel contesto
         verbose=True  # Mostra dettagli nel log
     )
     return llm
@@ -88,7 +91,7 @@ def rag_pipeline(folder_path, query, k=20):
     Risposta:
     """
 
-    llm = gemini_llm()
+    llm = local_llm()
 
     # Genera la risposta con il modello
     print("🔹 Generazione della risposta in corso...")
