@@ -44,7 +44,7 @@ def local_llm():
         temperature=0.7, # Controlla la creatività delle risposte
         max_tokens=512*2,  # Limita la lunghezza della risposta
         top_p=0.9,
-        n_ctx=4096*2*2,  # Numero di token massimo nel contesto
+        n_ctx=4096*2,  # Numero di token massimo nel contesto
         verbose=True  # Mostra dettagli nel log
     )
     return llm
