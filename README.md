@@ -14,6 +14,7 @@ Hackapizza-2025
 ├── src
 │  ├── Generation
 │  ├── Retrieval
+├── RAG.ipynb
 ├── README.md
 ```
 Nel seguito si dettagliano i ruoli dei diversi componenti:
