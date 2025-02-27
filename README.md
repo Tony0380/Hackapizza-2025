@@ -23,5 +23,6 @@ Nel seguito si dettagliano i ruoli dei diversi componenti:
 - `src/`: Contiene il codice sorgente del progetto
     - `Generation/`: Contiene funzioni per la GenAI
     - `Retrieval/`: Contiene funzioni per il retrieval del dataset e l'indexing
+- `RAG.ipynb`: Notebook Jupyter contenente il motore di ricerca generativo
 - `README.md`: Questo file
 ---
